@@ -6,10 +6,10 @@ import GameSwiper from '../components/GameSwiper';
 
 function Home({ games }) {
     return (
-        <section id="home" className='home'>
+        <section id="home" className='home active'>
             <div className="container-fluid">
                 <div className="row">
-                    <GameSwiper />
+                    <GameSwiper games={games} />
                 </div>
             </div>
         </section>
