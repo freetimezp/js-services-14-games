@@ -5,9 +5,9 @@ import './Home.css';
 import GameSwiper from '../components/GameSwiper';
 import GameCard from '../components/GameCard';
 
-function Home({ games }) {
+function Home({ games, reference }) {
     return (
-        <section id="home" className='home active'>
+        <section id="home" className='home active' ref={reference}>
             <div className="container-fluid">
                 <div className="row">
                     <GameSwiper games={games} />
