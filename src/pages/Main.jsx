@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 
 import './Main.css';
 
@@ -9,10 +9,12 @@ import Home from './Home';
 import Categories from './Categories';
 import MyLibrary from './MyLibrary';
 import Bag from './Bag';
+import { AppContext } from '../App';
 
 function Main() {
     const [active, setActive] = useState(false);
     const [games, setGames] = useState([]);
+    const { library, bag } = useContext(AppContext);
 
     const homeRef = useRef();
     const categoriesRef = useRef();
@@ -75,13 +77,17 @@ function Main() {
             <SideMenu active={active} sectionActive={handleSectionActive} />
 
             <div className={`banner ${active ? 'active' : undefined}`}>
-                <Header toggleActive={handleToggleActive} />
+                <Header toggleActive={handleToggleActive} library={library} />
 
                 <div className="container-fluid">
-                    <Home games={games} reference={homeRef} />
-                    <Categories games={games} reference={categoriesRef} />
-                    <MyLibrary games={games} reference={libraryRef} />
-                    <Bag games={games} reference={bagRef} />
+                    {games && games.length > 0 && (
+                        <>
+                            <Home games={games} reference={homeRef} />
+                            <Categories games={games} reference={categoriesRef} />
+                            <MyLibrary games={library} reference={libraryRef} />
+                            <Bag games={bag} reference={bagRef} />
+                        </>
+                    )}
                 </div>
             </div>
         </main>

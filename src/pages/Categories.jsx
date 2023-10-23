@@ -26,10 +26,6 @@ function Categories({ games, reference }) {
         setData(games.filter(game => game.category === category));
     };
 
-    useEffect(() => {
-        setData(games);
-    }, []);
-
     const [text, setText] = useState('');
     const handleSearchGames = (e) => {
         setData(
@@ -39,6 +35,10 @@ function Categories({ games, reference }) {
         );
         setText(e.target.value);
     };
+
+    useEffect(() => {
+        setData(games);
+    }, []);
 
     return (
         <section id="categories" className='categories' ref={reference}>
