@@ -1,0 +1,34 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useContext } from 'react';
+
+import './BagItem.css';
+
+import { AppContext } from '../App';
+
+function BagItem({ game, index }) {
+    const { bag, setBag } = useContext(AppContext);
+
+    const handleRemoveFromBag = (game) => {
+        setBag(bag.filter(item => item._id !== game._id));
+    };
+
+    return (
+        <tr className='shopBagItem'>
+            <th scope="row">{index + 1}</th>
+            <td>
+                <img src={game.img} alt="bag" className='img-fluid' />
+            </td>
+            <td>{game.title}</td>
+            <td>${game.price.toFixed(2)}</td>
+            <td>{game.discount * 100}%</td>
+            <td>${(game.price * (1 - game.discount)).toFixed(2)}</td>
+            <td>
+                <a href="#" onClick={() => handleRemoveFromBag(game)}>
+                    <i className="bi bi-trash"></i>
+                </a>
+            </td>
+        </tr>
+    );
+};
+
+export default BagItem;

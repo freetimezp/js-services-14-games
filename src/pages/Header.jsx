@@ -4,7 +4,7 @@ import './Header.css';
 
 import UserImg from '../images/user.jpg';
 
-function Header({ toggleActive, library }) {
+function Header({ toggleActive, library, bag }) {
     return (
         <header>
             <a href="#" className="menu" onClick={toggleActive}>
@@ -18,7 +18,7 @@ function Header({ toggleActive, library }) {
                 </a>
                 <a href="#" className="icon">
                     <i className="bi bi-bag-fill"></i>
-                    <span className="bag">0</span>
+                    <span className="bag">{bag.length > 0 ? bag.length : 0}</span>
                 </a>
 
                 <div className="avatar">

@@ -77,7 +77,7 @@ function Main() {
             <SideMenu active={active} sectionActive={handleSectionActive} />
 
             <div className={`banner ${active ? 'active' : undefined}`}>
-                <Header toggleActive={handleToggleActive} library={library} />
+                <Header toggleActive={handleToggleActive} library={library} bag={bag} />
 
                 <div className="container-fluid">
                     {games && games.length > 0 && (
