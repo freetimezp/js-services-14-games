@@ -60,7 +60,7 @@ function Main() {
     };
 
     const fetchData = () => {
-        fetch('http://localhost:3000/api/gamesData.json')
+        fetch('https://js-services-14-games.vercel.app/api/gamesData.json')
             .then(res => res.json())
             .then(data => {
                 setGames(data);
